@@ -1,0 +1,16 @@
+Flask
+Flask-Assets
+Flask-Babel
+Flask-Login
+Flask-Script
+Flask-Social
+Flask-Uploads
+Flask-Wtf
+Flask-SQLAlchemy
+Jinja2
+SQLAlchemy
+Werkzeug
+WTForms
+#psycopg2
+psycopg2cffi
+fdfgen
