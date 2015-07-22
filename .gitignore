@@ -1,0 +1,7 @@
+app/*.pyc
+app/*.db
+app/static/bootstrap-3.2.0-dist/
+app/static/js/
+*.fdf
+pypyvenv/*
+*~
