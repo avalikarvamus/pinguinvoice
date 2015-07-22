@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<form id="login" action="login" method="post">
+    <h2>Register</h2>
+    <fieldset id="inputs">
+        <ul>
+        <li><input id="first" name="first_name" type="text" placeholder="name" autofocus required></li>
+        <li><input id="last" name="last_name" type="text" placeholder="lastname" required></li>
+        <li><input id="password" name="password" type="password" placeholder="Password" required></li>
+        <li><input id="password_confirm" name="password_confirm" type="password" placeholder="Password confirm" required></li>
+        <li><input id="socsecnum" name="id_code" type="text" placeholder="social sec code" required></li>
+        <li><input id="email" name="email" type="text" placeholder="email@comp.com" required></li>
+        <li><input type="submit" id="submit" value="Login"></li>
+        </ul>
+    </fieldset>
+</form>
+
+
+
+{% endblock %}

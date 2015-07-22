@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header">
+<h1>{% if title %} {{ title }} {% else %} PinguInvoicer {% endif %}</h1>
+</div>
+<div id="overview">
+        <h2>Invoice list:</h2>
+        <ul>
+        {% for line in invoices %}
+	<li>{{ line.number }}<a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a><span> {% if line.confirmed %} Kinnitatud {% else %} kinnitamata {% endif %} </span>:<span> {% if line.confirmed %} Makstud {% else %} maksmamata {% endif %} </span>:<span class="numb"> {{ line.total }} </span></li>
+	{% else %}
+	<li>No invoices!</li>
+	{% endfor %}
+        </ul>
+</div>
+<div id="message">
+</div>
+<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
+{% endblock %}

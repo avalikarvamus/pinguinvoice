@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Invoice</title>
+    {% endif %}
+    <link rel="stylesheet" href="/static/css/invoicer.css">
+  </head>
+  <body>
+  <script src="/static/js/jquery-1.11.1.js"></script>
+  <script src="/static/js/invoicer.js"></script>
+  <div id="wrapper">
+	  <div id="menu">
+		<a href="{{ url_for('index') }}" class="bt">Overview</a><br>
+    <a href="{{ url_for('companies') }}" class="bt">Clients</a><br>
+    <a href="{{ url_for('add_company') }}" class="bta">Add Company</a><br>
+		<a href="{{ url_for('add_invoice') }}" class="bta">Add Invoice</a><br>
+	  </div>
+ {% block content %}
+ {% endblock	%}
+  </div>
+  </body>
+</html>

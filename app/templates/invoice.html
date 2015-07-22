@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header">
+<h1>{% if title %} {{ title }} {% else %} Home invoice {% endif %}</h1>
+</div>
+<div id="overview">
+        <h2>Invoice: {% if invoice.number %} {{ invoice.number }}  {% else %} (without number) {% endif %}</h2>
+        <p>Added: {{ invoice.time_added_to_base }}</p>
+        <p>Date: {% if invoice.date %} {{ invoice.date }} {% else %} (without date) {% endif %}</p>
+        <p>Due:  {% if invoice.due %} {{ invoice.due }} {% else %} (without due) {% endif %}</p>
+        <p>Issuer:  {% if invoice.issuer %} {{ invoice.issuer.companyname }} {% else %} (without issuer) {% endif %}</p>
+        <p>Company:  {% if invoice.company %} {{ invoice.company.companyname }} {% else %} (without company) {% endif %}</p>
+        <p>{% if invoice.desc %} {{ invoice.desc }} {% endif %}</p>
+</div>
+<div id="income">
+        <h3>Income lines:</h3>
+	<ul>
+	{% for line in invoice.lines %}
+	<li>{{ line.desc }} :<span class="numb"> {{ line.sum }}</span></li>
+	{% if loop.last %}
+		<li><b>Total: without VAT:<span class="numb">{{ invoice.total_sum }}</span> with VAT:<span class="numb">{{ invoice.total_total }}</span></b></li>
+	{% endif %}
+	{% else %}
+	<li>No income!</li>
+	{% endfor %}
+	</ul>
+  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">Kinnita</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" class="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('add_company') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
+  <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="bt">Loo fail</a>
+</div>
+<div id="message">
+</div>
+<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<form id="login" action="login" method="post">
+    <h2>Login</h2>
+    <fieldset id="inputs">
+        <input id="machine" name="kasutaja" type="text" placeholder="Username" autofocus required>
+        <input id="secret" name="salakala" type="password" placeholder="Password" required>
+    </fieldset>
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="Login">
+    </fieldset>
+</form>
+
+Not member yet?
+Register <a href="{{url_for('register')}}">here!</a>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header">
+<h1>{% if title %} {{ title }} {% else %} Home budget {% endif %}</h1>
+</div>
+<form action="" method="post" name="post">
+<div id="overview">
+        <ul>
+        <li>Invoice: {{ form.number }}</li>
+        <li>Desc: {{ form.desc }}</li>
+        <li>Invoice date: {{ form.invoice_date }}</li>
+        <li>Invoice due: {{ form.invoice_due }}</li>
+        <li>Invoice issuer: {{ form.issuer }}</li>
+        <li><input class="bta" type="submit" value="Add"></li>
+        </ul>
+</div>
+<div id="income">
+<span id="incfield">
+<ul>
+<li>1. Invoice line description: {{ form.desc0 }}</li>
+<li>1. Sum: {{ form.sum0 }}</li>
+</ul>
+</span>
+<a href="javascript:addIncomeField();" class="bta">Add line</a>
+</div>
+</form>
+<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
+{% endblock %}
