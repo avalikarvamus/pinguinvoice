@@ -8,8 +8,8 @@
         <p>Added: {{ invoice.time_added_to_base }}</p>
         <p>Date: {% if invoice.date %} {{ invoice.date }} {% else %} (without date) {% endif %}</p>
         <p>Due:  {% if invoice.due %} {{ invoice.due }} {% else %} (without due) {% endif %}</p>
-        <p>Issuer:  {% if invoice.issuer %} {{ invoice.issuer.companyname }} {% else %} (without issuer) {% endif %}</p>
-        <p>Company:  {% if invoice.company %} {{ invoice.company.companyname }} {% else %} (without company) {% endif %}</p>
+        <p>Issuer:  {% if invoice.issuer %} {{ invoice.issuer.name }} {% else %} (without issuer) {% endif %}</p>
+        <p>Company:  {% if invoice.company %} {{ invoice.company.name }} {% else %} (without company) {% endif %}</p>
         <p>{% if invoice.desc %} {{ invoice.desc }} {% endif %}</p>
 </div>
 <div id="income">

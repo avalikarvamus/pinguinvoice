@@ -4,14 +4,15 @@
 <h1>{% if title %} {{ title }} {% else %} PinguInvoicer {% endif %}</h1>
 </div>
 <div id="overview">
-        <h2>Company list:</h2>
-        <ul>
-        {% for line in companies %}
-	<li><a href="{{ url_for('show_company', company_id=line.id) }}">{{ line.name }}</a>:<span> {{ line.email }} </span> <span class="numb"> {{ line.code }} </span></li>
+  <h2>Company list:</h2>
+  <table class="table table-hover">
+  <th><td>Nimi</a></td><td>Esindaja nimi</td><td>Email</td><td>Telefoni number</td><td> Registrikood </td></th>
+  {% for line in companies %}
+	<tr><td>{{loop.index}}</td><td><a href="{{ url_for('show_company', company_id=line.id) }}">{{ line.name }}</a></td><td>{% if line.repname %} {{line.repname}} {% else %} ... {% endif %}</td><td>{{ line.email }}</td><td>{% if line.phone %} {{line.phone}} {% else %} ... {% endif %}</td><td> {{ line.code }} </td></tr>
 	{% else %}
 	<li>No invoices!</li>
 	{% endfor %}
-        </ul>
+</table>
 </div>
 <div id="message">
 </div>

@@ -7,11 +7,13 @@
     {% else %}
     <title>Invoice</title>
     {% endif %}
-    <link rel="stylesheet" href="/static/css/invoicer.css">
+    <!--link rel="stylesheet" href="/static/css/invoicer.css"-->
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css">
   </head>
   <body>
-  <script src="/static/js/jquery-1.11.1.js"></script>
+  <script src="/static/js/jquery-1.11.3.min.js"></script>
   <script src="/static/js/invoicer.js"></script>
+  <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
   <div id="wrapper">
 	  <div id="menu">
 		<a href="{{ url_for('index') }}" class="bt">Overview</a><br>

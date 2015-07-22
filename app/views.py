@@ -82,12 +82,13 @@ def add_invoice():
                         for key in request.form.keys())
         invoice = Invoice()
         print data
+
         form.populate_obj(invoice)
         for i in range(0, 10):
-            desc = None
+            linedesc = None
             sum = None
-            desc = data.get("desc"+str(i), None)
-            sum = data.get("desc"+str(i), None)
+            linedesc = data.get("desc"+str(i), None)
+            sum = data.get("sum"+str(i), None)
             try:
                 if sum:
                     sum = float(sum)
@@ -96,8 +97,8 @@ def add_invoice():
             except ValueError,e:
                 print "error",e, "'"+sum+"' is not float number!"
                 estimate = None
-            if desc and sum:
-                invoice.lines.append(InvoiceLine(desc=desc, sum=sum))
+            if linedesc and sum:
+                invoice.lines.append(InvoiceLine(desc=linedesc, sum=sum))
         db.session.add(invoice)
         db.session.commit()
         return redirect(url_for('index'))
@@ -115,7 +116,7 @@ def add_company():
         form.populate_obj(company)
         db.session.add(company)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('companies'))
     return render_template("add_company.html", title = u'Lisa ettevõte', form = form)
 
 @app.route('/company/<int:company_id>')

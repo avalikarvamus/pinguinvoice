@@ -4,14 +4,15 @@
 <h1>{% if title %} {{ title }} {% else %} PinguInvoicer {% endif %}</h1>
 </div>
 <div id="overview">
-        <h2>Invoice list:</h2>
-        <ul>
-        {% for line in invoices %}
-	<li>{{ line.number }}<a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a><span> {% if line.confirmed %} Kinnitatud {% else %} kinnitamata {% endif %} </span>:<span> {% if line.confirmed %} Makstud {% else %} maksmamata {% endif %} </span>:<span class="numb"> {{ line.total }} </span></li>
+  <h2>Invoice list:</h2>
+  <table class="table table-hover">
+  <th><td>Arve number</td><td>Arve kirjeldus</td><td>Kinnitatud/mustand</td><td> Makstud/maksmata </td><td>Arve summa</td></th>
+  {% for line in invoices %}
+	<tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} Kinnitatud {% else %} kinnitamata {% endif %} </td><td> {% if line.paid %} Makstud {% else %} maksmamata {% endif %} </td><td> {{ line.total }} </td></tr>
 	{% else %}
 	<li>No invoices!</li>
 	{% endfor %}
-        </ul>
+  </table>
 </div>
 <div id="message">
 </div>
