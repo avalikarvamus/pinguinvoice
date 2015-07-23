@@ -78,8 +78,8 @@ class Invoice(db.Model):
     issuer     = db.relationship('Company', backref=db.backref('issued_invoices'), foreign_keys=[issuer_id])
     client_id  = db.Column(db.Integer, db.ForeignKey('company.id'))
     client     = db.relationship('Company', backref=db.backref('invoices'), foreign_keys=[client_id])
-    confirmed  = db.Column(db.Boolean)
-    paid       = db.Column(db.Boolean)
+    confirmed_time  = db.Column(db.DateTime(timezone=True))
+    paid_time       = db.Column(db.DateTime(timezone=True))
 
     @property
     def total_sum(self):
@@ -104,6 +104,18 @@ class Invoice(db.Model):
             if item.total:
                 total = total + item.total
         return total
+
+    @property
+    def confirmed(self):
+        if self.confirmed_time == None:
+            return False
+        return True
+
+    @property
+    def paid(self):
+        if self.paid_time == None:
+            return False
+        return True
 
 class InvoiceFile(db.Model):
     __tablename__    = 'invoice_file'

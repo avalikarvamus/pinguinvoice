@@ -11,6 +11,8 @@
         <p>Issuer:  {% if invoice.issuer %} {{ invoice.issuer.name }} {% else %} (without issuer) {% endif %}</p>
         <p>Company:  {% if invoice.company %} {{ invoice.company.name }} {% else %} (without company) {% endif %}</p>
         <p>{% if invoice.desc %} {{ invoice.desc }} {% endif %}</p>
+        <p>Confirmed: {% if invoice.confirmed %} {{ invoice.confirmed_time }} {% else %} (not yet) {% endif %}</p>
+        <p>Paid:  {% if invoice.paid %} {{ invoice.paid_time }} {% else %} (not yet) {% endif %}</p>
 </div>
 <div id="income">
         <h3>Income lines:</h3>
@@ -24,7 +26,7 @@
 	<li>No income!</li>
 	{% endfor %}
 	</ul>
-  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">Kinnita</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" class="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('add_company') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
+  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">Kinnita</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" class="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('mark_invoice_paid') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
   <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="bt">Loo fail</a>
 </div>
 <div id="message">

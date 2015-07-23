@@ -46,10 +46,21 @@ def show_invoice(invoice_id):
 def confirm_invoice(invoice_id):
     #if 'user' in session:
     invoice = Invoice.query.filter(Invoice.id==invoice_id).first()
-    invoice.confirm = True
-    db.session.add(invoice)
-    db.session.commit
-    return render_template("invoice.html", title = 'PinguArved', invoice = invoice, message=u"Invoice confirmed!")
+    invoice.confirm = datetime.datetime.now()
+    #db.session.add(invoice)
+    db.session.commit()
+    return redirect(url_for('show_invoice', invoice_id=invoice.id))
+    #render_template("invoice.html", title = gettext('PinguInvoice'), invoice = invoice, message=gettext(u"Invoice confirmed!"))
+
+@app.route('/invoice/paid/<int:invoice_id>')
+def mark_invoice_paid(invoice_id):
+    #if 'user' in session:
+    invoice = Invoice.query.filter(Invoice.id==invoice_id).first()
+    invoice.paid = datetime.datetime.now()
+    #db.session.add(invoice)
+    db.session.commit()
+    return redirect(url_for('show_invoice', invoice_id=invoice.id))
+    #render_template("invoice.html", title = gettext('PinguInvoice'), invoice = invoice, message=gettext(u"Invoice marked paid!"))
 
 @app.route('/invoice/delete/<int:invoice_id>')
 def delete_invoice(invoice_id):
