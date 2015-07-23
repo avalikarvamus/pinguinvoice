@@ -3,12 +3,13 @@
 #    Copyright 2015 Madis Veskimeister <madis@pingviinitiivul.ee>
 #
 
-import  os, random, exceptions
+import  os, random, exceptions, datetime
 from flask import render_template, flash, redirect, session, url_for, request
 from app import app, db
 from models import User, Invoice, InvoiceLine, Company
 from forms import AddInvoiceForm, AddCompanyForm
 from fdfgen import forge_fdf
+from flask.ext.babel import gettext, ngettext
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -39,7 +40,7 @@ def register():
 def show_invoice(invoice_id):
     #if 'user' in session:
     invoice = Invoice.query.filter(Invoice.id==invoice_id).first()
-    return render_template("invoice.html", title = 'PinguArved', invoice = invoice)
+    return render_template("invoice.html", title = gettext('PinguInvoice'), invoice = invoice)
 
 @app.route('/invoice/confirm/<int:invoice_id>')
 def confirm_invoice(invoice_id):
@@ -55,9 +56,9 @@ def delete_invoice(invoice_id):
     #if 'user' in session:
     invoice = Invoice.query.filter(Invoice.id==invoice_id).first()
     db.session.delete(invoice)
-    db.session.commit
-    flash(u"Invoice deleted!")
-    return redirect(url_for('index'))
+    db.session.commit()
+    flash(gettext(u"Invoice deleted!"))
+    return redirect(url_for('invoices'))
     #render_template("invoices.html", title = 'PinguArved', , message=u"Invoice deleted!")
 
 
@@ -117,24 +118,24 @@ def add_company():
         db.session.add(company)
         db.session.commit()
         return redirect(url_for('companies'))
-    return render_template("add_company.html", title = u'Lisa ettevõte', form = form)
+    return render_template("add_company.html", title = gettext(u'Lisa ettevõte'), form = form)
 
 @app.route('/company/<int:company_id>')
 def show_company(company_id):
     #if 'user' in session:
     company = Company.query.filter(Company.id==company_id).first()
-    return render_template("company.html", title = u'PinguArved - Ettevõte', company = company)
+    return render_template("company.html", title = gettext(u'PinguArved - Ettevõte'), company = company)
 
 @app.route('/companies/')
 def companies():
     #if 'user' in session:
     companies = Company.query.all()
-    return render_template("companies.html", title = 'PinguArved Companies', companies = companies)
+    return render_template("companies.html", title = gettext('PinguArved Companies'), companies = companies)
 
 @app.route('/')
 def index():
     #if 'user' in session:
     Invoices = Invoice.query.all()
-    return render_template("invoices.html", title = 'PinguArved', invoices = Invoices)
+    return render_template("invoices.html", title = gettext('PinguArved'), invoices = Invoices)
 
 app.secret_key="ashjdksahklamsdlkamsdsdasashjdksahklamsdlkamssdadasdsafas"
