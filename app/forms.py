@@ -10,11 +10,12 @@ from flask import flash
 from flask import request, current_app
 from flask_wtf import Form
 from app import db, config
+from flask.ext.babel import gettext, ngettext
 
 from app.models import Invoice, Company
 
 class AddInvoiceForm(Form):
-    number = TextField(u"Number", [Required()])
+    number = TextField(gettext("Number"), [Required()])
     desc = TextField(u"Description", [Required()])
     invoice_date = DateField(u"Date", [Required()])
     invoice_due  = DateField(u"Due", [Required()])

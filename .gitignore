@@ -1,7 +1,8 @@
 app/*.pyc
 app/*.db
+app/*.pot
 app/static/bootstrap-3.2.0-dist/
 app/static/js/
 *.fdf
-pypyvenv/*
+ppvenv/*
 *~

@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="header">
-<h1>{% if title %} {{ title }} {% else %} Home budget {% endif %}</h1>
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('Add Invoice') }} {% endif %}</h1>
 </div>
 <form action="" method="post" name="post">
 <div id="overview">
         <table class="table table-hover">
-        <tr><td>Invoice:</td><td> {{ form.number }}</td></tr>
-        <tr><td>Desc:</td><td> {{ form.desc }}</td></tr>
-        <tr><td>Invoice date:</td><td> {{ form.invoice_date }} <span class="input-group-addon">
+        <tr><td>{{ gettext('Invoice:') }} </td><td> {{ form.number }}</td></tr>
+        <tr><td{{ gettext('Desc:') }}</td><td> {{ form.desc }}</td></tr>
+        <tr><td>{{ gettext('Invoice date:') }}</td><td> {{ form.invoice_date }} <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span></td></tr>
-        <tr><td>Invoice due:</td><td> {{ form.invoice_due }}</td></tr>
-        <tr><td>Invoice issuer:</td><td> {{ form.issuer }}</td></tr>
+        <tr><td>{{ gettext('Invoice due:') }}</td><td> {{ form.invoice_due }}</td></tr>
+        <tr><td>{{ gettext('Invoice issuer:') }}</td><td> {{ form.issuer }}</td></tr>
         </table>
         <script type="text/javascript">
             $(function () {
@@ -28,8 +28,8 @@
 <li>1. Sum: {{ form.sum0 }}</li>
 </ul>
 </span>
-<a href="javascript:addIncomeField();" class="bta">Add line</a>
+<a href="javascript:addIncomeField();" class="bta">{{ gettext('Add line') }}</a>
 </div>
 </form>
-<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
+<noscript><div id="noscript">{{ gettext("Need's JavaScript to work!") }}</div></noscript>
 {% endblock %}
