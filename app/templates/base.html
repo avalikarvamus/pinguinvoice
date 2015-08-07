@@ -16,10 +16,10 @@
   <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
   <div id="wrapper">
 	  <div id="menu">
-		<a href="{{ url_for('index') }}" class="bt">Overview</a><br>
-    <a href="{{ url_for('companies') }}" class="bt">Clients</a><br>
-    <a href="{{ url_for('add_company') }}" class="bta">Add Company</a><br>
-		<a href="{{ url_for('add_invoice') }}" class="bta">Add Invoice</a><br>
+		<a href="{{ url_for('index') }}" class="bt">{{ gettext('Overview') }}</a><br>
+    <a href="{{ url_for('companies') }}" class="bt">{{ gettext('Clients') }}</a><br>
+    <a href="{{ url_for('add_company') }}" class="bta">{{ gettext('Add Company') }}</a><br>
+		<a href="{{ url_for('add_invoice') }}" class="bta">{{ gettext('Add Invoice') }}</a><br>
 	  </div>
  {% block content %}
  {% endblock	%}

@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 <form id="add-company" action="" method="post">
-    <h2>Add new company</h2>
+    <h2>{{ gettext('Add new company') }}</h2>
     <fieldset id="inputs">
         <ul>
-        <li><input id="name" name="name" type="text" placeholder="company name" autofocus required></li>
-        <li><input id="code" name="code" type="text" placeholder="123" required></li>
-        <li><input id="repname" name="repname" type="text" placeholder="Representative name"></li>
-        <li>Address:<input id="address" name="address" type="text" placeholder="Street 1, ZIP, City" required></li>
-        <li>Email:<input id="email" name="email" type="text" placeholder="email@comp.com" required></li>
-        <li>Phone:<input id="phone" name="phone" type="text" placeholder="123"></li>
-        <li>Is issuer:<input id="issuer" name="issuer" type="checkbox"></li>
-        <li><input type="submit" id="submit" value="Add company"></li>
+        <li><input id="name" name="name" type="text" placeholder="{{ gettext('company name') }}" autofocus required></li>
+        <li><input id="code" name="code" type="text" placeholder="{{ gettext('reg code') }}" required></li>
+        <li><input id="repname" name="repname" type="text" placeholder="{{ gettext('representative name') }}"></li>
+        <li>{{ gettext('Address:') }}<input id="address" name="address" type="text" placeholder="{{ gettext('Street 1, ZIP, City') }}" required></li>
+        <li>{{ gettext('Email:') }}<input id="email" name="email" type="text" placeholder="{{ gettext('email@comp.com') }}" required></li>
+        <li>{{ gettext('Phone:') }}<input id="phone" name="phone" type="text" placeholder="{{ gettext('+123-456') }}"></li>
+        <li>{{ gettext('Is issuer:') }}<input id="issuer" name="issuer" type="checkbox"></li>
+        <li><input type="submit" id="submit" value="{{ gettext('Add company') }}"></li>
         </ul>
     </fieldset>
 </form>
-
 
 {% endblock %}

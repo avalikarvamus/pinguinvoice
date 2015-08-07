@@ -114,7 +114,7 @@ def add_invoice():
         db.session.add(invoice)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template("add_invoice.html", title = 'Lisa arve', form = form)
+    return render_template("add_invoice.html", title = gettext('Add invoice'), form = form)
 
 @app.route('/add-company/', methods = ['GET', 'POST'])
 def add_company():
@@ -129,24 +129,24 @@ def add_company():
         db.session.add(company)
         db.session.commit()
         return redirect(url_for('companies'))
-    return render_template("add_company.html", title = gettext(u'Lisa ettevõte'), form = form)
+    return render_template("add_company.html", title = gettext(u'Add company'), form = form)
 
 @app.route('/company/<int:company_id>')
 def show_company(company_id):
     #if 'user' in session:
     company = Company.query.filter(Company.id==company_id).first()
-    return render_template("company.html", title = gettext(u'PinguArved - Ettevõte'), company = company)
+    return render_template("company.html", title = gettext(u'PinguInvoice - Company'), company = company)
 
 @app.route('/companies/')
 def companies():
     #if 'user' in session:
     companies = Company.query.all()
-    return render_template("companies.html", title = gettext('PinguArved Companies'), companies = companies)
+    return render_template("companies.html", title = gettext('PinguInvoice - Companies'), companies = companies)
 
 @app.route('/')
 def index():
     #if 'user' in session:
     Invoices = Invoice.query.all()
-    return render_template("invoices.html", title = gettext('PinguArved'), invoices = Invoices)
+    return render_template("invoices.html", title = gettext('PinguInvoice - Invoices'), invoices = Invoices)
 
 app.secret_key="ashjdksahklamsdlkamsdsdasashjdksahklamsdlkamssdadasdsafas"

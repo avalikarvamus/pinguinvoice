@@ -1,0 +1,117 @@
+# Estonian translations for .
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the  project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PinguInvoice\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-08-07 14:17+0300\n"
+"PO-Revision-Date: 2015-08-07 14:21+0300\n"
+"Last-Translator: Madis Veskimeister <madis@pingviinitiivul.ee>\n"
+"Language-Team: et <madis@pingviinitiivul.ee>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.0\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: views.py:43
+msgid "PinguInvoice"
+msgstr "PinguArved"
+
+#: views.py:74
+msgid "Invoice deleted!"
+msgstr "Arve kustutatud!"
+
+#: views.py:120
+msgid "Add invoice"
+msgstr "Lisa arve"
+
+#: views.py:135 templates/add_company.html:14
+msgid "Add company"
+msgstr "Lisa ettevõte"
+
+#: views.py:141
+msgid "PinguInvoice - Company"
+msgstr "PinguArved - Ettevõte"
+
+#: views.py:147
+#, fuzzy
+msgid "PinguInvoice - Companies"
+msgstr "PinguArved - Ettevõtted"
+
+#: views.py:153
+msgid "PinguInvoice - Invoices"
+msgstr "PinguArved - Arved"
+
+#: templates/add_company.html:4
+msgid "Add new company"
+msgstr "Lisa uus ettevõte"
+
+#: templates/add_company.html:7
+msgid "company name"
+msgstr "ettevõte nimi"
+
+#: templates/add_company.html:8
+msgid "reg code"
+msgstr "registrikood"
+
+#: templates/add_company.html:9
+msgid "representative name"
+msgstr "esindaja nimi"
+
+#: templates/add_company.html:10
+msgid "Address:"
+msgstr "Aadress:"
+
+#: templates/add_company.html:10
+msgid "Street 1, ZIP, City"
+msgstr "Tänav 1, 12345, Linn "
+
+#: templates/add_company.html:11
+msgid "Email:"
+msgstr "Epost:"
+
+#: templates/add_company.html:11
+msgid "email@comp.com"
+msgstr "epost@ettevote.ee"
+
+#: templates/add_company.html:12
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: templates/add_company.html:12
+msgid "+123-456"
+msgstr "+372-654321"
+
+#: templates/add_company.html:13
+msgid "Is issuer:"
+msgstr "Väljastab arveid:"
+
+#: templates/base.html:19
+msgid "Overview"
+msgstr "Ülevaade"
+
+#: templates/base.html:20
+msgid "Clients"
+msgstr "Kliendid"
+
+#: templates/base.html:21
+msgid "Add Company"
+msgstr "Lisa ettevõte"
+
+#: templates/base.html:22
+msgid "Add Invoice"
+msgstr "Lisa arve"
+
+#~ msgid "Lisa ettevõte"
+#~ msgstr "Lisa ettevõte"
+
+#~ msgid "PinguArved - Ettevõte"
+#~ msgstr "PinguArved - Ettevõte"
+
+#~ msgid "PinguArved"
+#~ msgstr "PinguArved"

@@ -5,14 +5,21 @@
 </div>
 <form action="" method="post" name="post">
 <div id="overview">
-        <ul>
-        <li>Invoice: {{ form.number }}</li>
-        <li>Desc: {{ form.desc }}</li>
-        <li>Invoice date: {{ form.invoice_date }}</li>
-        <li>Invoice due: {{ form.invoice_due }}</li>
-        <li>Invoice issuer: {{ form.issuer }}</li>
-        <li><input class="bta" type="submit" value="Add"></li>
-        </ul>
+        <table class="table table-hover">
+        <tr><td>Invoice:</td><td> {{ form.number }}</td></tr>
+        <tr><td>Desc:</td><td> {{ form.desc }}</td></tr>
+        <tr><td>Invoice date:</td><td> {{ form.invoice_date }} <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span></td></tr>
+        <tr><td>Invoice due:</td><td> {{ form.invoice_due }}</td></tr>
+        <tr><td>Invoice issuer:</td><td> {{ form.issuer }}</td></tr>
+        </table>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+        <input class="bta" type="submit" value="Add">
 </div>
 <div id="income">
 <span id="incfield">
