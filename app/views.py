@@ -36,6 +36,26 @@ def register():
     #form = UserRegistrationForm()
     return render_template("register.html")
 
+@app.route('/')
+def index():
+    #if 'user' in session:
+    Invoices = Invoice.query.order_by(Invoice.time_added_to_base).order_by(Invoice.time_added_to_base).limit(10)
+    Drafts = Invoice.query.filter(Invoice.confirmed_time==None).order_by(Invoice.time_added_to_base).limit(10)
+    NotpaidInvoices = Invoice.query.filter(Invoice.confirmed_time!=None).filter(Invoice.paid_time==None).order_by(Invoice.confirmed_time).limit(10)
+    return render_template("index.html", title = gettext('PinguInvoice - Overview'), invoices = Invoices, drafts = Drafts, notpaid = NotpaidInvoices)
+
+@app.route('/invoices/<string:filter>')
+def invoices(filter):
+    if filter=="paid":
+        Invoices = Invoice.query.filter(Invoice.paid_time!=None).filter(Invoice.confirmed_time!=None).all()
+    elif filter=="draft":
+        Invoices = Invoice.query.filter(Invoice.confirmed_time==None).all()
+    elif filter=="notpaid":
+        Invoices = Invoice.query.filter(Invoice.confirmed_time==None).filter(Invoice.confirmed_time!=None).all()
+    else:
+        Invoices = Invoice.query.all()
+    return render_template("invoices.html", title = gettext('PinguInvoice - Invoices'), invoices = Invoices)
+
 @app.route('/invoice/<int:invoice_id>')
 def show_invoice(invoice_id):
     #if 'user' in session:
@@ -142,11 +162,5 @@ def companies():
     #if 'user' in session:
     companies = Company.query.all()
     return render_template("companies.html", title = gettext('PinguInvoice - Companies'), companies = companies)
-
-@app.route('/')
-def index():
-    #if 'user' in session:
-    Invoices = Invoice.query.all()
-    return render_template("invoices.html", title = gettext('PinguInvoice - Invoices'), invoices = Invoices)
 
 app.secret_key="ashjdksahklamsdlkamsdsdasashjdksahklamsdlkamssdadasdsafas"

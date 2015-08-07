@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header">
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('PinguInvoicer') }} {% endif %}</h1>
+</div>
+<div id="overview">
+  <h2>{{ gettext('Last 10 invoices:') }}</h2>
+  <table class="table table-hover">
+  <th><td>{{ gettext('Invoice number') }}</td><td>{{ gettext('Invoice description') }}</td><td>{{ gettext('Invoice/draft') }}</td><td> {{ gettext('Paid') }}</td><td>{{ gettext('Invoice total') }}</td></th>
+  {% for line in invoices %}
+	<tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} {{ gettext('Kinnitatud') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.paid %} {{ gettext('paid') }} {% else %} {{ gettext('not paid') }} {% endif %} </td><td> {{ line.total }} </td></tr>
+	{% else %}
+	<li>{{ gettext('No invoices!') }}</li>
+	{% endfor %}
+  </table>
+
+  <h2>{{ gettext('Last 10 not paid invoices:') }}</h2>
+  <table class="table table-hover">
+  <th><td>{{ gettext('Invoice number') }}</td><td>{{ gettext('Invoice description') }}</td><td>{{ gettext('Invoice/draft') }}</td><td> {{ gettext('Paid') }}</td><td>{{ gettext('Invoice total') }}</td></th>
+  {% for line in notpaid %}
+  <tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} {{ gettext('Kinnitatud') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.paid %} {{ gettext('paid') }} {% else %} {{ gettext('not paid') }} {% endif %} </td><td> {{ line.total }} </td></tr>
+  {% else %}
+  <li>{{ gettext('No invoices!') }}</li>
+  {% endfor %}
+  </table>
+
+  <h2>{{ gettext('Last 10 drafts:') }}</h2>
+  <table class="table table-hover">
+  <th><td>{{ gettext('Invoice number') }}</td><td>{{ gettext('Invoice description') }}</td><td>{{ gettext('Invoice/draft') }}</td><td> {{ gettext('Paid') }}</td><td>{{ gettext('Invoice total') }}</td></th>
+  {% for line in drafts %}
+  <tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} {{ gettext('Kinnitatud') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.paid %} {{ gettext('paid') }} {% else %} {{ gettext('not paid') }} {% endif %} </td><td> {{ line.total }} </td></tr>
+  {% else %}
+  <li>{{ gettext('No invoices!') }}</li>
+  {% endfor %}
+  </table>
+</div>
+<div id="message">
+</div>
+{% endblock %}
