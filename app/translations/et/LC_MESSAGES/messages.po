@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PinguInvoice\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-07 14:17+0300\n"
-"PO-Revision-Date: 2015-08-07 14:21+0300\n"
+"POT-Creation-Date: 2015-08-07 15:50+0300\n"
+"PO-Revision-Date: 2015-08-07 15:55+0300\n"
 "Last-Translator: Madis Veskimeister <madis@pingviinitiivul.ee>\n"
 "Language-Team: et <madis@pingviinitiivul.ee>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.0\n"
 "X-Generator: Poedit 1.5.4\n"
+
+#: forms.py:18
+msgid "Number"
+msgstr "Number"
 
 #: views.py:43
 msgid "PinguInvoice"
@@ -63,7 +67,7 @@ msgstr "registrikood"
 msgid "representative name"
 msgstr "esindaja nimi"
 
-#: templates/add_company.html:10
+#: templates/add_company.html:10 templates/company.html:11
 msgid "Address:"
 msgstr "Aadress:"
 
@@ -71,7 +75,7 @@ msgstr "Aadress:"
 msgid "Street 1, ZIP, City"
 msgstr "Tänav 1, 12345, Linn "
 
-#: templates/add_company.html:11
+#: templates/add_company.html:11 templates/company.html:12
 msgid "Email:"
 msgstr "Epost:"
 
@@ -91,6 +95,45 @@ msgstr "+372-654321"
 msgid "Is issuer:"
 msgstr "Väljastab arveid:"
 
+#: templates/add_invoice.html:4 templates/base.html:22
+msgid "Add Invoice"
+msgstr "Lisa arve"
+
+#: templates/add_invoice.html:9 templates/invoice.html:7
+#, fuzzy
+msgid "Invoice:"
+msgstr "Lisa arve"
+
+#: templates/add_invoice.html:10
+#, fuzzy
+msgid "Desc:"
+msgstr "Aadress:"
+
+#: templates/add_invoice.html:11
+#, fuzzy
+msgid "Invoice date:"
+msgstr "Arve kustutatud!"
+
+#: templates/add_invoice.html:14
+#, fuzzy
+msgid "Invoice due:"
+msgstr "Arve kustutatud!"
+
+#: templates/add_invoice.html:15
+#, fuzzy
+msgid "Invoice issuer:"
+msgstr "Väljastab arveid:"
+
+#: templates/add_invoice.html:31
+#, fuzzy
+msgid "Add line"
+msgstr "Lisa arve"
+
+#: templates/base.html:8 templates/companies.html:4
+#, fuzzy
+msgid "PinguInvoicer"
+msgstr "PinguArved"
+
 #: templates/base.html:19
 msgid "Overview"
 msgstr "Ülevaade"
@@ -103,9 +146,171 @@ msgstr "Kliendid"
 msgid "Add Company"
 msgstr "Lisa ettevõte"
 
-#: templates/base.html:22
-msgid "Add Invoice"
+#: templates/base.html:27
+msgid "Need's JavaScript to work!"
+msgstr "Programm vajab tööks Javascripti!"
+
+#: templates/companies.html:7
+#, fuzzy
+msgid "Company list:"
+msgstr "ettevõte nimi"
+
+#: templates/companies.html:9
+msgid "Name"
+msgstr "Nimi"
+
+#: templates/companies.html:9
+#, fuzzy
+msgid "Representative name"
+msgstr "esindaja nimi"
+
+#: templates/companies.html:9
+#, fuzzy
+msgid "Email"
+msgstr "Epost:"
+
+#: templates/companies.html:9
+msgid "Telephone number"
+msgstr "Telefoni number"
+
+#: templates/companies.html:9
+#, fuzzy
+msgid "Registry code"
+msgstr "registrikood"
+
+#: templates/companies.html:13 templates/company.html:24
+#: templates/company.html:35
+#, fuzzy
+msgid "No invoices!"
 msgstr "Lisa arve"
+
+#: templates/company.html:4
+#, fuzzy
+msgid "Company"
+msgstr "Lisa ettevõte"
+
+#: templates/company.html:7 templates/invoice.html:12
+#, fuzzy
+msgid "Company:"
+msgstr "Lisa ettevõte"
+
+#: templates/company.html:7
+msgid "(without desc)"
+msgstr "(ilma kirjelduseta)"
+
+#: templates/company.html:8 templates/invoice.html:8
+msgid "Added:"
+msgstr "Lisatud:"
+
+#: templates/company.html:9
+#, fuzzy
+msgid "Code:"
+msgstr "registrikood"
+
+#: templates/company.html:9
+msgid "(without code)"
+msgstr "(ilma koodita)"
+
+#: templates/company.html:10
+#, fuzzy
+msgid "Representative:"
+msgstr "esindaja nimi"
+
+#: templates/company.html:10
+#, fuzzy
+msgid "(without representative)"
+msgstr "esindaja nimi"
+
+#: templates/company.html:11
+msgid "(without address)"
+msgstr "(ilma aadressita)"
+
+#: templates/company.html:12
+msgid "(without email)"
+msgstr "(ilma epostita)"
+
+#: templates/company.html:13
+msgid "Issuer of invoices:"
+msgstr "Arvete esitaja:"
+
+#: templates/company.html:16
+msgid "Invoices got:"
+msgstr "Arveid saadud:"
+
+#: templates/company.html:21 templates/company.html:32
+#: templates/invoice.html:23
+msgid "Total: without VAT:"
+msgstr "Kokku: ilma KM:"
+
+#: templates/company.html:27
+#, fuzzy
+msgid "Invoices issued:"
+msgstr "Väljastab arveid:"
+
+#: templates/company.html:32 templates/invoice.html:23
+msgid "with VAT:"
+msgstr "koos KM:"
+
+#: templates/invoice.html:7
+msgid "(without number)"
+msgstr "(ilma numbrita)"
+
+#: templates/invoice.html:9
+msgid "Date:"
+msgstr "Kuupäev:"
+
+#: templates/invoice.html:9
+msgid "(without date)"
+msgstr "(ilma kuupäevata)"
+
+#: templates/invoice.html:10
+msgid "Due:"
+msgstr "Tähtaeg:"
+
+#: templates/invoice.html:10
+msgid "(without due)"
+msgstr "(ilma tähtajata)"
+
+#: templates/invoice.html:11
+#, fuzzy
+msgid "Issuer:"
+msgstr "Väljastab arveid:"
+
+#: templates/invoice.html:11
+msgid "(without issuer)"
+msgstr "(ilma esitajata)"
+
+#: templates/invoice.html:12
+msgid "(without company)"
+msgstr "(ilma ettevõteta)"
+
+#: templates/invoice.html:14
+msgid "Confirmed:"
+msgstr "Kinnitatud:"
+
+#: templates/invoice.html:14 templates/invoice.html:15
+msgid "(not yet)"
+msgstr "(pole veel)"
+
+#: templates/invoice.html:15
+msgid "Paid:"
+msgstr "Makstud:"
+
+#: templates/invoice.html:18
+msgid "Income lines:"
+msgstr "Sissetuleku ridu:"
+
+#: templates/invoice.html:26
+msgid "No income!"
+msgstr "Sissetulek puudub!"
+
+#: templates/invoice.html:29
+msgid "Confirm"
+msgstr "Kinnita"
+
+#: templates/invoice.html:30
+msgid "Create file"
+msgstr "Loo fail"
 
 #~ msgid "Lisa ettevõte"
 #~ msgstr "Lisa ettevõte"

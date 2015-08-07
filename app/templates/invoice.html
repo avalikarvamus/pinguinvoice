@@ -4,32 +4,31 @@
 <h1>{% if title %} {{ title }} {% else %} Home invoice {% endif %}</h1>
 </div>
 <div id="overview">
-        <h2>Invoice: {% if invoice.number %} {{ invoice.number }}  {% else %} (without number) {% endif %}</h2>
-        <p>Added: {{ invoice.time_added_to_base }}</p>
-        <p>Date: {% if invoice.date %} {{ invoice.date }} {% else %} (without date) {% endif %}</p>
-        <p>Due:  {% if invoice.due %} {{ invoice.due }} {% else %} (without due) {% endif %}</p>
-        <p>Issuer:  {% if invoice.issuer %} {{ invoice.issuer.name }} {% else %} (without issuer) {% endif %}</p>
-        <p>Company:  {% if invoice.company %} {{ invoice.company.name }} {% else %} (without company) {% endif %}</p>
+        <h2>{{ gettext('Invoice:') }} {% if invoice.number %} {{ invoice.number }}  {% else %} {{ gettext('(without number)') }} {% endif %}</h2>
+        <p>{{ gettext('Added:') }} {{ invoice.time_added_to_base }}</p>
+        <p>{{ gettext('Date:') }} {% if invoice.date %} {{ invoice.date }} {% else %} {{ gettext('(without date)') }} {% endif %}</p>
+        <p>{{ gettext('Due:') }}  {% if invoice.due %} {{ invoice.due }} {% else %} {{ gettext('(without due)') }} {% endif %}</p>
+        <p>{{ gettext('Issuer:') }}  {% if invoice.issuer %} {{ invoice.issuer.name }} {% else %} {{ gettext('(without issuer)') }} {% endif %}</p>
+        <p>{{ gettext('Company:') }}  {% if invoice.company %} {{ invoice.company.name }} {% else %} {{ gettext('(without company)') }} {% endif %}</p>
         <p>{% if invoice.desc %} {{ invoice.desc }} {% endif %}</p>
-        <p>Confirmed: {% if invoice.confirmed %} {{ invoice.confirmed_time }} {% else %} (not yet) {% endif %}</p>
-        <p>Paid:  {% if invoice.paid %} {{ invoice.paid_time }} {% else %} (not yet) {% endif %}</p>
+        <p>{{ gettext('Confirmed:') }} {% if invoice.confirmed %} {{ invoice.confirmed_time }} {% else %} {{ gettext('(not yet)') }} {% endif %}</p>
+        <p>{{ gettext('Paid:') }} {% if invoice.paid %} {{ invoice.paid_time }} {% else %} {{ gettext('(not yet)') }} {% endif %}</p>
 </div>
 <div id="income">
-        <h3>Income lines:</h3>
+        <h3>{{ gettext('Income lines:') }}</h3>
 	<ul>
 	{% for line in invoice.lines %}
 	<li>{{ line.desc }} :<span class="numb"> {{ line.sum }}</span></li>
 	{% if loop.last %}
-		<li><b>Total: without VAT:<span class="numb">{{ invoice.total_sum }}</span> with VAT:<span class="numb">{{ invoice.total_total }}</span></b></li>
+		<li><b>{{ gettext('Total: without VAT:') }}<span class="numb">{{ invoice.total_sum }}</span> {{ gettext('with VAT:') }}<span class="numb">{{ invoice.total_total }}</span></b></li>
 	{% endif %}
 	{% else %}
-	<li>No income!</li>
+	<li>{{ gettext('No income!') }}</li>
 	{% endfor %}
 	</ul>
-  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">Kinnita</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" class="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('mark_invoice_paid') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
-  <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="bt">Loo fail</a>
+  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">{{ gettext('Confirm') }}</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" cla ss="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('mark_invoice_paid') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
+  <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="bt">{{ gettext('Create file') }}</a>
 </div>
 <div id="message">
 </div>
-<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
 {% endblock %}

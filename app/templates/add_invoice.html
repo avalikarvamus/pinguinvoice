@@ -7,8 +7,8 @@
 <div id="overview">
         <table class="table table-hover">
         <tr><td>{{ gettext('Invoice:') }} </td><td> {{ form.number }}</td></tr>
-        <tr><td{{ gettext('Desc:') }}</td><td> {{ form.desc }}</td></tr>
-        <tr><td>{{ gettext('Invoice date:') }}</td><td> {{ form.invoice_date }} <span class="input-group-addon">
+        <tr><td>{{ gettext('Desc:') }} </td><td> {{ form.desc }}</td></tr>
+        <tr><td>{{ gettext('Invoice date:') }} </td><td> {{ form.invoice_date }} <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span></td></tr>
         <tr><td>{{ gettext('Invoice due:') }}</td><td> {{ form.invoice_due }}</td></tr>
@@ -31,5 +31,4 @@
 <a href="javascript:addIncomeField();" class="bta">{{ gettext('Add line') }}</a>
 </div>
 </form>
-<noscript><div id="noscript">{{ gettext("Need's JavaScript to work!") }}</div></noscript>
 {% endblock %}
