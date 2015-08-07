@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="header">
-<h1>{% if title %} {{ title }} {% else %} PinguInvoicer {% endif %}</h1>
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('PinguInvoicer') }} {% endif %}</h1>
 </div>
 <div id="overview">
-  <h2>Company list:</h2>
+  <h2>{{ gettext('Company list:') }}</h2>
   <table class="table table-hover">
-  <th><td>Nimi</a></td><td>Esindaja nimi</td><td>Email</td><td>Telefoni number</td><td> Registrikood </td></th>
+  <th><td>{{ gettext('Name') }}</a></td><td>{{ gettext('Representative name') }}</td><td>{{ gettext('Email') }}</td><td>{{ gettext('Telephone number') }}</td><td>{{ gettext('Registry code') }} </td></th>
   {% for line in companies %}
 	<tr><td>{{loop.index}}</td><td><a href="{{ url_for('show_company', company_id=line.id) }}">{{ line.name }}</a></td><td>{% if line.repname %} {{line.repname}} {% else %} ... {% endif %}</td><td>{{ line.email }}</td><td>{% if line.phone %} {{line.phone}} {% else %} ... {% endif %}</td><td> {{ line.code }} </td></tr>
 	{% else %}
-	<li>No invoices!</li>
+	<li>{{ gettext('No invoices!') }}</li>
 	{% endfor %}
 </table>
 </div>
 <div id="message">
 </div>
-<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
 {% endblock %}

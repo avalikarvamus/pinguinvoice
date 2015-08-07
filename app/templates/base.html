@@ -5,7 +5,7 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Invoice</title>
+    <title>{{ gettext('PinguInvoicer') }}</title>
     {% endif %}
     <!--link rel="stylesheet" href="/static/css/invoicer.css"-->
     <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css">
@@ -24,5 +24,6 @@
  {% block content %}
  {% endblock	%}
   </div>
+  <noscript><div id="noscript">{{ gettext("Need's JavaScript to work!") }}</div></noscript>
   </body>
 </html>

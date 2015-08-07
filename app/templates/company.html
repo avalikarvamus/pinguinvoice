@@ -1,42 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="header">
-<h1>{% if title %} {{ title }} {% else %} Company {% endif %}</h1>
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('Company') }} {% endif %}</h1>
 </div>
 <div id="overview">
-        <h2>Company: {% if company.name %} {{ company.name }}  {% else %} (without desc) {% endif %}</h2>
-        <p>Added: {{ company.time_added_to_base }}</p>
-        <p>Code:  {% if company.code %} {{ company.code }} {% else %} (without code) {% endif %}</p>
-        <p>Representative:  {% if company.repname %} {{ company.repname }} {% else %} (without representative) {% endif %}</p>
-        <p>Address:  {% if company.address %} {{ company.address }} {% else %} (without address) {% endif %}</p>
-        <p>Email:  {% if company.email %} {{ company.email }} {% else %} (without email) {% endif %}</p>
-        <p>Issuer of invoices:  {% if company.issuer %} <b>yes</b> {% else %} no {% endif %}</p>
+        <h2>{{ gettext('Company:') }} {% if company.name %} {{ company.name }}  {% else %} {{ gettext('(without desc)') }} {% endif %}</h2>
+        <p>{{ gettext('Added:') }} {{ company.time_added_to_base }}</p>
+        <p>{{ gettext('Code:') }}  {% if company.code %} {{ company.code }} {% else %} {{ gettext('(without code)') }} {% endif %}</p>
+        <p>{{ gettext('Representative:') }}  {% if company.repname %} {{ company.repname }} {% else %} {{ gettext('(without representative)') }} {% endif %}</p>
+        <p>{{ gettext('Address:') }}  {% if company.address %} {{ company.address }} {% else %} {{ gettext('(without address)') }} {% endif %}</p>
+        <p>{{ gettext('Email:') }}  {% if company.email %} {{ company.email }} {% else %} {{ gettext('(without email)') }} {% endif %}</p>
+        <p>{{ gettext('Issuer of invoices:') }}  {% if company.issuer %} <b>yes</b> {% else %} no {% endif %}</p>
 </div>
 <div id="income">
-        <h3>Invoices got:</h3>
+        <h3>{{ gettext('Invoices got:') }}</h3>
 	<ul>
 	{% for line in company.invoices %}
 	<li><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.number }}</a> {{ line.desc }} :<span class="numb"> {{ line.total_total }}</span></li>
 	{% if loop.last %}
-		<li><b>Total: without VAT:<span class="numb">{{ company.issued_total_sum }}</span> with VAT:<span class="numb">{{ company.total_total }}</span></b></li>
+		<li><b>{{ gettext('Total: without VAT:') }}<span class="numb">{{ company.issued_total_sum }}</span> with VAT:<span class="numb">{{ company.total_total }}</span></b></li>
 	{% endif %}
 	{% else %}
-	<li>No invoices!</li>
+	<li>{{ gettext('No invoices!') }}</li>
 	{% endfor %}
 	</ul>
-    <h3>Invoices issued:</h3>
+    <h3>{{ gettext('Invoices issued:') }}</h3>
   <ul>
 	{% for line in company.issued_invoices %}
 	<li><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.number }}</a> {{ line.desc }} :<span class="numb"> {{ line.total_total }}</span></li>
 	{% if loop.last %}
-		<li><b>Total: without VAT:<span class="numb">{{ company.total_issued }}</span> with VAT:<span class="numb">{{ company.total_issued }}</span></b></li>
+		<li><b>{{ gettext('Total: without VAT:') }}<span class="numb">{{ company.total_issued }}</span> {{ gettext('with VAT:') }}<span class="numb">{{ company.total_issued }}</span></b></li>
 	{% endif %}
 	{% else %}
-	<li>No invoices!</li>
+	<li>{{ gettext('No invoices!') }}</li>
 	{% endfor %}
 	</ul>
 </div>
 <div id="message">
 </div>
-<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
 {% endblock %}
