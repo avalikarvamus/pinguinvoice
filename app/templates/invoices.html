@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="header">
-<h1>{% if title %} {{ title }} {% else %} PinguInvoicer {% endif %}</h1>
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('PinguInvoicer') }} {% endif %}</h1>
 </div>
 <div id="overview">
-  <h2>Invoice list:</h2>
+  <h2>{{ gettext('Invoice list:') }}</h2>
   <table class="table table-hover">
-  <th><td>Arve number</td><td>Arve kirjeldus</td><td>Kinnitatud/mustand</td><td> Makstud/maksmata </td><td>Arve summa</td></th>
+  <th><td>{{ gettext('Invoice number') }}</td><td>{{ gettext('Invoice description') }}</td><td>{{ gettext('Invoice/draft') }}</td><td> {{ gettext('Paid') }}</td><td>{{ gettext('Invoice total') }}</td></th>
   {% for line in invoices %}
-	<tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} Kinnitatud {% else %} kinnitamata {% endif %} </td><td> {% if line.paid %} Makstud {% else %} maksmamata {% endif %} </td><td> {{ line.total }} </td></tr>
+	<tr><td>{{loop.index}}</td><td>{{ line.number }}</td><td><a href="{{ url_for('show_invoice', invoice_id=line.id) }}">{{ line.desc }}</a></td><td> {% if line.confirmed %} {{ gettext('Confirmed') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.paid %} {{ gettext('paid') }} {% else %} {{ gettext('not paid') }} {% endif %} </td><td> {{ line.total }} </td></tr>
 	{% else %}
-	<li>No invoices!</li>
+	<li>{{ gettext('No invoices!') }}</li>
 	{% endfor %}
   </table>
 </div>
 <div id="message">
 </div>
-<noscript><div id="noscript">Need's JavaScript to work!</div></noscript>
 {% endblock %}

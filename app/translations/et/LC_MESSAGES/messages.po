@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PinguInvoice\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-07 15:50+0300\n"
-"PO-Revision-Date: 2015-08-07 15:55+0300\n"
+"POT-Creation-Date: 2015-08-07 17:21+0300\n"
+"PO-Revision-Date: 2015-08-07 17:28+0300\n"
 "Last-Translator: Madis Veskimeister <madis@pingviinitiivul.ee>\n"
 "Language-Team: et <madis@pingviinitiivul.ee>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -22,34 +22,39 @@ msgstr ""
 msgid "Number"
 msgstr "Number"
 
-#: views.py:43
+#: views.py:45
+#, fuzzy
+msgid "PinguInvoice - Overview"
+msgstr "PinguArved - Arved"
+
+#: views.py:57
+msgid "PinguInvoice - Invoices"
+msgstr "PinguArved - Arved"
+
+#: views.py:63
 msgid "PinguInvoice"
 msgstr "PinguArved"
 
-#: views.py:74
+#: views.py:94
 msgid "Invoice deleted!"
 msgstr "Arve kustutatud!"
 
-#: views.py:120
+#: views.py:140
 msgid "Add invoice"
 msgstr "Lisa arve"
 
-#: views.py:135 templates/add_company.html:14
+#: views.py:155 templates/add_company.html:14
 msgid "Add company"
 msgstr "Lisa ettevõte"
 
-#: views.py:141
+#: views.py:161
 msgid "PinguInvoice - Company"
 msgstr "PinguArved - Ettevõte"
 
-#: views.py:147
+#: views.py:167
 #, fuzzy
 msgid "PinguInvoice - Companies"
 msgstr "PinguArved - Ettevõtted"
-
-#: views.py:153
-msgid "PinguInvoice - Invoices"
-msgstr "PinguArved - Arved"
 
 #: templates/add_company.html:4
 msgid "Add new company"
@@ -129,7 +134,8 @@ msgstr "Väljastab arveid:"
 msgid "Add line"
 msgstr "Lisa arve"
 
-#: templates/base.html:8 templates/companies.html:4
+#: templates/base.html:8 templates/companies.html:4 templates/index.html:4
+#: templates/invoices.html:4
 #, fuzzy
 msgid "PinguInvoicer"
 msgstr "PinguArved"
@@ -179,7 +185,8 @@ msgid "Registry code"
 msgstr "registrikood"
 
 #: templates/companies.html:13 templates/company.html:24
-#: templates/company.html:35
+#: templates/company.html:35 templates/index.html:13 templates/index.html:23
+#: templates/index.html:33 templates/invoices.html:13
 #, fuzzy
 msgid "No invoices!"
 msgstr "Lisa arve"
@@ -251,6 +258,70 @@ msgstr "Väljastab arveid:"
 msgid "with VAT:"
 msgstr "koos KM:"
 
+#: templates/index.html:7
+#, fuzzy
+msgid "Last 10 invoices:"
+msgstr "Arvete esitaja:"
+
+#: templates/index.html:9 templates/index.html:19 templates/index.html:29
+#: templates/invoices.html:9
+#, fuzzy
+msgid "Invoice number"
+msgstr "Arve kustutatud!"
+
+#: templates/index.html:9 templates/index.html:19 templates/index.html:29
+#: templates/invoices.html:9
+msgid "Invoice description"
+msgstr "Arve kirjeldus"
+
+#: templates/index.html:9 templates/index.html:19 templates/index.html:29
+#: templates/invoices.html:9
+#, fuzzy
+msgid "Invoice/draft"
+msgstr "Arve kustutatud!"
+
+#: templates/index.html:9 templates/index.html:19 templates/index.html:29
+#: templates/invoices.html:9
+#, fuzzy
+msgid "Paid"
+msgstr "Makstud:"
+
+#: templates/index.html:9 templates/index.html:19 templates/index.html:29
+#: templates/invoices.html:9
+#, fuzzy
+msgid "Invoice total"
+msgstr "Arveid saadud:"
+
+#: templates/index.html:11 templates/index.html:21 templates/index.html:31
+#: templates/invoices.html:11
+msgid "Kinnitatud"
+msgstr "Kinnitatud"
+
+#: templates/index.html:11 templates/index.html:21 templates/index.html:31
+#: templates/invoices.html:11
+#, fuzzy
+msgid "not confirmed"
+msgstr "Kinnitatud:"
+
+#: templates/index.html:11 templates/index.html:21 templates/index.html:31
+#: templates/invoices.html:11
+#, fuzzy
+msgid "paid"
+msgstr "Makstud:"
+
+#: templates/index.html:11 templates/index.html:21 templates/index.html:31
+#: templates/invoices.html:11
+msgid "not paid"
+msgstr "pole makstud"
+
+#: templates/index.html:17
+msgid "Last 10 not paid invoices:"
+msgstr "Viimased 10 maksmata arvet"
+
+#: templates/index.html:27
+msgid "Last 10 drafts:"
+msgstr "Viimased 10 arvete mustandit"
+
 #: templates/invoice.html:7
 msgid "(without number)"
 msgstr "(ilma numbrita)"
@@ -311,6 +382,11 @@ msgstr "Kinnita"
 #: templates/invoice.html:30
 msgid "Create file"
 msgstr "Loo fail"
+
+#: templates/invoices.html:7
+#, fuzzy
+msgid "Invoice list:"
+msgstr "Väljastab arveid:"
 
 #~ msgid "Lisa ettevõte"
 #~ msgstr "Lisa ettevõte"
