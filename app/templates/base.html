@@ -15,12 +15,16 @@
   <script src="/static/js/invoicer.js"></script>
   <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
   <div id="wrapper">
-	  <div id="menu">
-		<a href="{{ url_for('index') }}" class="bt">{{ gettext('Overview') }}</a><br>
-    <a href="{{ url_for('companies') }}" class="bt">{{ gettext('Clients') }}</a><br>
-    <a href="{{ url_for('add_company') }}" class="bta">{{ gettext('Add Company') }}</a><br>
-		<a href="{{ url_for('add_invoice') }}" class="bta">{{ gettext('Add Invoice') }}</a><br>
-	  </div>
+	  <ul class="nav nav-pills">
+		<li><a href="{{ url_for('index') }}" class="btn btn-primary">{{ gettext('Overview') }}</a></li>
+    <li><a href="{{ url_for('add_invoice') }}" class="btn btn-success">{{ gettext('Add Invoice') }}</a></li>
+    <li><a href="{{ url_for('companies') }}" class="btn btn-primary">{{ gettext('Clients') }}</a></li>
+    <li><a href="{{ url_for('add_company') }}" class="btn btn-success">{{ gettext('Add Company') }}</a></li>
+    </ul>
+    <div>
+      User info:
+      {% if user %} <a href="{{ url_for('logout') }}">{{ user }}</a> {% else %} {{ gettext('Not logged in') }} {% endif %}
+    </div>
  {% block content %}
  {% endblock	%}
   </div>

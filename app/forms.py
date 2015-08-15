@@ -14,6 +14,13 @@ from flask.ext.babel import gettext, ngettext
 
 from app.models import Invoice, Company
 
+class AddUserForm(Form):
+    name         = TextField(gettext("Username"), [Required()])
+    firstname    = TextField(u"First name", [Required()])
+    email        = TextField(u"Email", [Required()])
+    password     = TextField(u"Password", [Required()])
+    lang         = TextField(u"Language code", [Required()])
+
 class AddInvoiceForm(Form):
     number = TextField(gettext("Number"), [Required()])
     desc = TextField(u"Description", [Required()])

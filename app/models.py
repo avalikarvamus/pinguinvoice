@@ -7,17 +7,40 @@ from flask import Flask
 from app import app, db
 from datetime import datetime
 from sqlalchemy.orm import relationship, backref
+from passlib.apps import custom_app_context as pwd_context
 
 class User(db.Model):
     id        = db.Column(db.Integer, primary_key=True)
-    name      = db.Column(db.String(), nullable=False)
-    firstname = db.Column(db.String(), nullable=False)
-    email     = db.Column(db.String(), nullable=False)
+    name      = db.Column(db.String(64), nullable=False)
+    firstname = db.Column(db.String(64), nullable=False)
+    email     = db.Column(db.String(64), nullable=False)
     time_added_to_base = db.Column(db.DateTime(timezone=True), default=db.func.now())
-    password  = db.Column(db.String(255), nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    lang      = db.Column(db.String(5), nullable=False)
+
+    def hash_password(self, password):
+        self.password_hash = pwd_context.encrypt(password)
+
+    def verify_password(self, password):
+        return pwd_context.verify(password, self.password_hash)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        try:
+            return unicode(self.id)  # python 2
+        except NameError:
+            return str(self.id)  # python 3
 
     def __repr__(self):
-        return 'kasutaja %s, %s ( %s , %s )' % self.name, self.firstname, self.email, self.time_added_to_base.strftime('%d.%m.%y %H:%M')
+        return '<User %r>' % (self.name)
 
 class Company(db.Model):
     id          = db.Column(db.Integer, primary_key=True)

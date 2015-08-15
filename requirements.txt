@@ -7,6 +7,7 @@ Flask-Social
 Flask-Uploads
 Flask-Wtf
 Flask-SQLAlchemy
+Flask-OpenID
 Jinja2
 SQLAlchemy
 Werkzeug

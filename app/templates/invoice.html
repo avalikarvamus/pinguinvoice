@@ -26,8 +26,8 @@
 	<li>{{ gettext('No income!') }}</li>
 	{% endfor %}
 	</ul>
-  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="bta">{{ gettext('Confirm') }}</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" cla ss="btb">Kustuta</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('mark_invoice_paid') }}" class="bta">Märgi arve makstuks</a> {% endif %} {% endif %}
-  <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="bt">{{ gettext('Create file') }}</a>
+  {% if not invoice.confirmed %} <a href="{{ url_for('confirm_invoice', invoice_id=invoice.id) }}" class="btn btn-success btn-md">{{ gettext('Confirm') }}</a> <a href="{{ url_for('delete_invoice', invoice_id=invoice.id) }}" class="btn btn-danger btn-md">{{ gettext('Delete') }}</a> {% else %} {% if not invoice.paid %} <a href="{{ url_for('mark_invoice_paid') }}" class="btn btn-success btn-md">{{ gettext('Mark invoice paid') }}</a> {% endif %} {% endif %}
+  <a href="{{ url_for('generate_invoice_file', invoice_id=invoice.id) }}" class="btn btn-success btn-md">{{ gettext('Create file') }}</a>
 </div>
 <div id="message">
 </div>
