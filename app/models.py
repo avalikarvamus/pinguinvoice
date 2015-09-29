@@ -8,6 +8,7 @@ from app import app, db
 from datetime import datetime
 from sqlalchemy.orm import relationship, backref
 from passlib.apps import custom_app_context as pwd_context
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     id        = db.Column(db.Integer, primary_key=True)
@@ -17,6 +18,14 @@ class User(db.Model):
     time_added_to_base = db.Column(db.DateTime(timezone=True), default=db.func.now())
     password_hash = db.Column(db.String(128), nullable=False)
     lang      = db.Column(db.String(5), nullable=False)
+
+    def __init__(self, name, password, firstname, email):
+        self.name = name
+        self.hash_password(password)
+        self.firstname = firstname
+        self.email = email
+        self.lang = "en"
+
 
     def hash_password(self, password):
         self.password_hash = pwd_context.encrypt(password)

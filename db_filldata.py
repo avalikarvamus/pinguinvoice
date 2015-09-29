@@ -11,7 +11,7 @@ from app.models import User, Invoice, InvoiceLine, Company
 from flask.ext.security.utils import encrypt_password
 
 def fillData():
-    user        = User(name = "test", firstname ="testfirst", email="test@example.com", password_hash=user.hash_password("secret"), lang="en")
+    user        =  User("test", "secret", "jaak", "jaak@test.ee")
     myspendings =  [InvoiceLine(desc="Kommunaalid", sum=50.0),
                     InvoiceLine(desc="Toit", sum=220.0),
                     InvoiceLine(desc="Bensiin", sum=150.0),
