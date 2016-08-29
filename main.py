@@ -4,7 +4,7 @@
 #    Copyright 2015 Madis Veskimeister <madis@pingviinitiivul.ee>
 #
 
-from flask.ext.login import LoginManager
+from flask_login import LoginManager
 from app import app
 
 login_manager = LoginManager()

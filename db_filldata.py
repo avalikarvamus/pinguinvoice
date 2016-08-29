@@ -8,7 +8,7 @@ from app.config import SQLALCHEMY_DATABASE_URI
 from app import db
 import os.path
 from app.models import User, Invoice, InvoiceLine, Company
-from flask.ext.security.utils import encrypt_password
+from flask_security.utils import encrypt_password
 
 def fillData():
     user        =  User("test", "secret", "jaak", "jaak@test.ee")

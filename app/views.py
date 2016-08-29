@@ -8,8 +8,8 @@ from flask import render_template, flash, redirect, session, url_for, request
 from app import app, db
 from models import User, Invoice, InvoiceLine, Company
 from forms import AddInvoiceForm, AddCompanyForm
-from fdfgen import forge_fdf
-from flask.ext.babel import gettext, ngettext
+#from fdfgen import forge_fdf
+from flask_babel import gettext, ngettext
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():

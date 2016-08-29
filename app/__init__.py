@@ -4,8 +4,8 @@
 #
 
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy #,  LoginManager
-from flask.ext.babel import Babel
+from flask_sqlalchemy import SQLAlchemy #,  LoginManager
+from flask_babel import Babel
 import os
 #from flask.ext.openid import OpenID
 #from config import basedir

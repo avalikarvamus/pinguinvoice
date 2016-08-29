@@ -10,7 +10,7 @@ from flask import flash
 from flask import request, current_app
 from flask_wtf import Form
 from app import db, config
-from flask.ext.babel import gettext, ngettext
+from flask_babel import gettext, ngettext
 
 from app.models import Invoice, Company
 
