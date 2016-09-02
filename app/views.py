@@ -4,12 +4,21 @@
 #
 
 import  os, random, exceptions, datetime, auth
-from flask import render_template, flash, redirect, session, url_for, request
-from app import app, db
+from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
+from app import app, db, lm #, oid
+from flask_login import login_user, logout_user, current_user, login_required
 from models import User, Invoice, InvoiceLine, Company
 from forms import AddInvoiceForm, AddCompanyForm
-#from fdfgen import forge_fdf
+from fdfgen import forge_fdf
 from flask_babel import gettext, ngettext
+
+@lm.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+@app.before_request
+def before_request():
+    g.user = current_user
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -25,19 +34,30 @@ def login():
 
 @app.route('/logout', methods = ['GET', 'POST'])
 def logout():
-    session.pop('user', None)
+    logout_user()
     return redirect(url_for('index'))
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    #if user:
+    #    session['user']=user
+    user = g.user
     if user:
-        session['user']=user
         return redirect(url_for('index'))
     if request.method == 'POST':
         if request.form.has_key('kasutaja') and request.form.has_key('salakala'):
             print "blablaa"
     #form = UserRegistrationForm()
     return render_template("register.html")
+
+@app.route('/user/<int:user_id>', methods = ['GET'])
+def show_user(user_id):
+    #if user:
+    #    session['user']=user
+    user = g.user
+    shownuser = User.query.filter(User.id==user_id).first()
+    return render_template("user.html", shownuser = shownuser, user = user)
+    #return redirect(url_for('index'))
 
 @app.route('/users')
 @auth.requires_auth
@@ -165,6 +185,10 @@ def companies():
     companies = Company.query.all()
     return render_template("companies.html", title = gettext('PinguInvoice - Companies'), companies = companies)
 
+@app.route('/angular/')
+def angular():
+    return render_template("angular.html", title = gettext('PinguInvoice - Companies'))
+
 @app.route('/api/users', methods = ['POST'])
 def new_user():
     name = request.json.get('username')
@@ -178,5 +202,19 @@ def new_user():
     db.session.add(user)
     db.session.commit()
     return jsonify({ 'username': user.name }), 201, {'Location': url_for('get_user', id = user.id, _external = True)}
+
+@app.route('/api/invoices')
+def invoices_json():
+    if filter=="paid":
+        Invoices = Invoice.query.filter(Invoice.paid_time!=None).filter(Invoice.confirmed_time!=None).all()
+    elif filter=="draft":
+        Invoices = Invoice.query.filter(Invoice.confirmed_time==None).all()
+    elif filter=="notpaid":
+        Invoices = Invoice.query.filter(Invoice.confirmed_time==None).filter(Invoice.confirmed_time!=None).all()
+    else:
+        Invoices = Invoice.query.all()
+    #return render_template("invoices.html", title = gettext('PinguInvoice - Invoices'), invoices = Invoices)
+    return jsonify(invoices=[e.serialize() for e in Invoices])
+
 
 app.secret_key="ashjdksahklamsdlkamsdsdasashjdksahklamsdlkamssdadasdsafas"

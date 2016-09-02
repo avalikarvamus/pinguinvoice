@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="header">
+<h1>{% if title %} {{ title }} {% else %} {{ gettext('PinguInvoicer') }} {% endif %}</h1>
+</div>
+<div id="overview">
+  <h2>{{ gettext('User:') }}</h2>
+	<li>{{ shownuser.name }}</li>
+  <li>{{ shownuser.firstname }}</li>
+  <li></li>
+  <li></li>
+</div>
+<div id="message">
+</div>
+{% endblock %}

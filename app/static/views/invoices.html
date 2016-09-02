@@ -1,0 +1,21 @@
+<div class="list">
+    <div class="item" ng-class="{'edited': invoice.edited, 'completed': invoice.completed}" ng-repeat="invoice in invoices | orderBy: 'completed'" ng-init="invoice.completed = false">
+        <input ng-model="invoice.completed" type="checkbox"/>
+        <label ng-click="editing=true" ng-hide="editing">{{invoice.number}}</label>
+        <input ng-change="invoice.edited = true" ng-blur="editing=false;"
+               ng-show="editing" ng-model="invoice.number" class="editing-label" type="text"/>
+
+        <div class="actions">
+            <a href="" ng-click="editing=!editing" class="btn btn-info">
+                edit
+            </a>
+            <a href="" ng-click="saveInvoice(invoice, $index)" class="btn btn-success">
+                save
+            </a>
+            <a href="" ng-click="deleteInvoice(invoice, $index)" class="btn btn-danger">
+                delete
+            </a>
+        </div>
+    </div>
+    <div><a href="" ng-click="addInvice()">Add invoice</a></div>
+</div>

@@ -18,6 +18,8 @@ class User(db.Model):
     time_added_to_base = db.Column(db.DateTime(timezone=True), default=db.func.now())
     password_hash = db.Column(db.String(128), nullable=False)
     lang      = db.Column(db.String(5), nullable=False)
+    admin     = db.Column(db.Boolean, nullable=False, default=False)
+    active    = db.Column(db.Boolean, nullable=False, default=False)
 
     def __init__(self, name, password, firstname, email):
         self.name = name
@@ -37,7 +39,7 @@ class User(db.Model):
         return True
 
     def is_active(self):
-        return True
+        return True #self.active
 
     def is_anonymous(self):
         return False
@@ -148,6 +150,13 @@ class Invoice(db.Model):
         if self.paid_time == None:
             return False
         return True
+
+    def serialize(self):
+        return {
+            'invoice_id': self.id,
+            'number': self.number,
+            'desc': self.desc,
+        }
 
 class InvoiceFile(db.Model):
     __tablename__    = 'invoice_file'

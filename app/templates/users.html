@@ -6,9 +6,9 @@
 <div id="overview">
   <h2>{{ gettext('Users list:') }}</h2>
   <table class="table table-hover">
-  <th><td>{{ gettext('User name') }}</td><td>{{ gettext('User fistname') }}</td><td>{{ gettext('Invoice/draft') }}</td><td> {{ gettext('Paid') }}</td><td>{{ gettext('Invoice total') }}</td></th>
+  <th><td>{{ gettext('User name') }}</td><td>{{ gettext('User fistname') }}</td><td>{{ gettext('Confirmed') }}</td><td> {{ gettext('Rights') }}</td><td>{{ gettext('Invoice total') }}</td></th>
   {% for line in users %}
-	<tr><td>{{loop.index}}</td><td>{{ line.name }}</td><td>{{ line.firstname }}</a></td><td> {% if line.confirmed %} {{ gettext('Confirmed') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.paid %} {{ gettext('paid') }} {% else %} {{ gettext('not paid') }} {% endif %} </td><td> {{ line.total }} </td></tr>
+	<tr><td>{{loop.index}}</td><td>{{ line.name }}</td><td><a href="{{ url_for('show_user', User_id=line.id) }}">{{ line.firstname }}</a></td><td> {% if line.confirmed %} {{ gettext('Confirmed') }} {% else %} {{ gettext('not confirmed') }} {% endif %} </td><td> {% if line.admin %} {{ gettext('admin') }} {% else %} {{ gettext('user') }} {% endif %} </td><td> {{ line.total }} </td></tr>
 	{% else %}
 	<li>{{ gettext('No users!') }}</li>
 	{% endfor %}

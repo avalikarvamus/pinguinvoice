@@ -12,6 +12,6 @@ Jinja2
 SQLAlchemy
 Werkzeug
 WTForms
+fdfgen
 psycopg2
 #psycopg2cffi
-fdfgen

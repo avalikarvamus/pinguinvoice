@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>{{ gettext('PinguInvoicer') }}</title>
+    {% endif %}
+    <!--link rel="stylesheet" href="/static/css/invoicer.css"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+<body ng-app="pinguApp">
+  <!--script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script-->
+  <div id="wrapper">
+	  <ul class="nav nav-pills">
+{{ invoices }}
+    </ul>
+  </div>
+  <noscript><div id="noscript">{{ gettext("Need's JavaScript to work!") }}</div></noscript>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script src="/static/scripts/pinguApp.js"></script>
+<script src="/static/controllers/pinguController.js"></script>
+<script src="/static/services/dataService.js"></script>
+<script src="/static/directives/pinguDirective.js"></script>
+  </body>
+</html>

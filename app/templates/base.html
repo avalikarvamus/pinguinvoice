@@ -8,7 +8,7 @@
     <title>{{ gettext('PinguInvoicer') }}</title>
     {% endif %}
     <!--link rel="stylesheet" href="/static/css/invoicer.css"-->
-    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
   <script src="/static/js/jquery-1.11.3.min.js"></script>
@@ -23,7 +23,7 @@
     </ul>
     <div>
       User info:
-      {% if user %} <a href="{{ url_for('logout') }}">{{ user }}</a> {% else %} {{ gettext('Not logged in') }} {% endif %}
+      {% if user %} <a href="{{ url_for('show_user', user_id=1) }}">{{ user }}</a> <a href="{{ url_for('logout') }}">logout</a> {% else %} {{ gettext('Not logged in') }} {% endif %}
     </div>
  {% block content %}
  {% endblock	%}
