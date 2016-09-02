@@ -1,8 +1,8 @@
 app.controller("pinguController", function($scope, dataService){
     console.log("Controller is alive");
 
-    service.getInvoices(function (response) {
-        $scope.invoices = response.data;
+    dataService.getInvoices(function (response) {
+        $scope.invoices = response.data.invoices;
         console.log("Loading invoices");
     });
 
@@ -13,7 +13,7 @@ app.controller("pinguController", function($scope, dataService){
 
     $scope.deleteInvoice = function(invoice, index){
         $scope.invoices.splice(index, 1);
-        service.deleteInvoice(invoice);
+        dataService.deleteInvoice(invoice);
         console.log("Deleted from runtime " + index);
     };
 
