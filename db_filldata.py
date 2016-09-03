@@ -18,12 +18,12 @@ def fillData():
                     InvoiceLine(desc="Toit", sum=220.0),
                     InvoiceLine(desc="Bensiin", sum=150.0),
                     InvoiceLine(desc="Kommunikatsioonid", sum=12.0)]
-    invoice = Invoice(desc="test", lines=i1lines)
+    invoice = Invoice(desc="test", lines=i1lines, number="A-001")
     i2lines = [InvoiceLine(desc="Kommunaalid", sum=45.0),
                     InvoiceLine(desc="Toit", sum=320.0),
                     InvoiceLine(desc="Bussipiletid", sum=99.0),
                     InvoiceLine(desc="Kommunikatsioonid", sum=32.0)]
-    invoice2 = Invoice(desc="test2", lines=i2lines)
+    invoice2 = Invoice(desc="test2", lines=i2lines, number="A-003")
     i3lines = [InvoiceLine(desc="Kommunaalid", sum=65.0),
                     InvoiceLine(desc="Toit", sum=280.0),
                     InvoiceLine(desc="Bensiin", sum=159.0),

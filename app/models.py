@@ -156,6 +156,9 @@ class Invoice(db.Model):
             'invoice_id': self.id,
             'number': self.number,
             'desc': self.desc,
+            'time': self.confirmed_time,
+            #'client': self.client.name,
+            'total': self.total,
         }
 
 class InvoiceFile(db.Model):

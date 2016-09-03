@@ -4,7 +4,11 @@
         <label ng-click="editing=true" ng-hide="editing">{{invoice.number}}</label>
         <input ng-change="invoice.edited = true" ng-blur="editing=false;"
                ng-show="editing" ng-model="invoice.number" class="editing-label" type="text"/>
-
+        {{ invoice.desc }} <br>
+        {{ invoice.number }} <br>
+        {{ invoice.invoice_id }} <br>
+        {{ invoice.time }} <br>
+        {{ invoice.total }} <br>
         <div class="actions">
             <a href="" ng-click="editing=!editing" class="btn btn-info">
                 edit
