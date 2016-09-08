@@ -1,0 +1,11 @@
+#menu {
+  //position: absolute;
+  top: 50px;
+  left: 20px;
+  width: 200px;
+  height: 40px;
+  background-color: #F9FBB4;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}

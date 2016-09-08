@@ -1,14 +1,24 @@
-<div class="list">
-    <div class="item" ng-class="{'edited': invoice.edited, 'completed': invoice.completed}" ng-repeat="invoice in invoices | orderBy: 'completed'" ng-init="invoice.completed = false">
-        <input ng-model="invoice.completed" type="checkbox"/>
+<table class="table">
+  <thead>
+    <tr>
+        <th>Invoice number</th>
+        <th>Client</th>
+        <th>ID</th>
+        <th>Time</th>
+        <th>Total</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr ng-class="{'edited': invoice.edited, 'completed': invoice.completed}" ng-init="invoice.completed = false" ng-repeat="invoice in invoices | orderBy: 'completed'">
+        <td><input ng-model="invoice.completed" type="checkbox"/>
         <label ng-click="editing=true" ng-hide="editing">{{invoice.number}}</label>
         <input ng-change="invoice.edited = true" ng-blur="editing=false;"
-               ng-show="editing" ng-model="invoice.number" class="editing-label" type="text"/>
-        {{ invoice.desc }} <br>
-        {{ invoice.number }} <br>
-        {{ invoice.invoice_id }} <br>
-        {{ invoice.time }} <br>
-        {{ invoice.total }} <br>
+               ng-show="editing" ng-model="invoice.number" class="editing-label" type="text"/></td>
+        <td>{{invoice.desc}}</td>
+        <td>{{invoice.invoice_id}}</td>
+        <td>{{invoice.time}}</td>
+        <td>{{invoice.total}}</td>
+        <td>
         <div class="actions">
             <a href="" ng-click="editing=!editing" class="btn btn-info">
                 edit
@@ -20,6 +30,7 @@
                 delete
             </a>
         </div>
-    </div>
-    <div><a href="" ng-click="addInvoice()">Add invoice</a></div>
-</div>
+        <td>
+      </tr>
+</table>
+<div><a href="" ng-click="addInvoice()">Add invoice</a></div>

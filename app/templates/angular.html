@@ -9,11 +9,13 @@
     {% endif %}
     <!--link rel="stylesheet" href="/static/css/invoicer.css"-->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/menu.css">
     <script src="/static/js/angular.js"></script>
     <script src="/static/js/jquery-3.1.0.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
   </head>
 <body>
+  <div id="menu"><a href="" ng-click="active='invoices'" class="btn btn-info">Invoices</a><a href="" ng-click="active='clients'" class="btn btn-info">Clients</a></div>
   <div id="wrapper">
 <pingu-directive></pingu-directive>
   </div>
